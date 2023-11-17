@@ -1,10 +1,14 @@
+// dependencies
 const express = require('express');
-require('dotenv').config();
 const app = express();
+require('dotenv').config();
 
+// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+require('./database/index');
 
+// routers
 app.use('/api/authentication/', require('./routes/authentication'));
 app.use('/api/kid', require('./routes/kidProfile'));
 app.use('/api/reports/', require('./routes/reports'));
