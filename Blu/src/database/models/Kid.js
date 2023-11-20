@@ -6,6 +6,10 @@ const KidSchema = new mongoose.Schema({
     },
     age: {
         type: mongoose.SchemaTypes.Number
+    },
+    kidReport: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'kidsReports',
     }
 });
 

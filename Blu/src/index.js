@@ -1,5 +1,6 @@
 // dependencies
 const express = require('express');
+const { swaggerUI, swaggerSetup } = require('./swagger');
 const app = express();
 require('dotenv').config();
 
@@ -8,7 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('./database/index');
 
-// routers
+// routes
+app.use('/api-doc', swaggerUI.serve, swaggerSetup);
 app.use('/api/authentication/', require('./routes/authentication'));
 app.use('/api/kid', require('./routes/kidProfile'));
 app.use('/api/reports/', require('./routes/reports'));

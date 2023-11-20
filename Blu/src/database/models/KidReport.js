@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const KidReportSchema = new mongoose.Schema({
+    kid: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'kids'
+    },
     minutesPlayedToday: {
         type: mongoose.SchemaTypes.Number,
         default: 0

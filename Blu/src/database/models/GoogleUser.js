@@ -5,7 +5,11 @@ const GoogleUserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.String,
         required: true,
         unique: true
-    }
+    },
+    kids: [{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'kids'
+    }]
 });
 
 module.exports = mongoose.model('googleUsers', GoogleUserSchema);
