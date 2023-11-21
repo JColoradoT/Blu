@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//TODO: HAY QUE REVISAR COMO ES LA ESTRUCTURA DE UN GoogleId
 /**
  * @openapi
  * components:
@@ -7,22 +8,24 @@ const mongoose = require('mongoose');
  *      Kid:
  *          type: object
  *          properties:
+ *              user_id:
+ *                  anyOf:
+ *                      -   $ref: '#/components/schemas/User'
+ *                      -   $ref: '#/components/schemas/GoogleUser'
+ *                  example: '5123512'
  *              name:
  *                  type: string
  *                  example: 'Gustavo Adolfo'
  *              age:
  *                  type: integer
  *                  example: 53
- *              kids:
- *                  type: array
- *                  items:
- *                      $ref: '#/components/schemas/Kid'
- *                  uniqueItems: true
- *                  example: ['5123512', '2151532','5325325']
+ *              kid_report_id:
+ *                  $ref: '#/components/schemas/KidReport'
+ *                  example: '748EC96F5883EDCF053F8B03'
  */
 
 const KidSchema = new mongoose.Schema({
-    userId: {
+    user_id: {
         type: mongoose.SchemaTypes.ObjectId,
         refPath: 'user_type'
     },

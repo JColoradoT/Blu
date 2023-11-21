@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
  *                  items:
  *                      $ref: '#/components/schemas/Kid'
  *                  uniqueItems: true
- *                  example: ['5123512', '2151532','5325325']
+ *                  example: ['BD62E2A09FC9C2F57DF327E1', '18C2C8DDCA7A8030DEE9D549']
  */
 
 const GoogleUserSchema = new mongoose.Schema({
