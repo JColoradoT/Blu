@@ -1,26 +1,26 @@
 const mongoose = require('mongoose');
 
 const KidReportSchema = new mongoose.Schema({
-    kid: {
+    kid_id: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'kids'
+        ref: 'Kid'
     },
-    minutesPlayedToday: {
+    minutes_played_today: {
         type: mongoose.SchemaTypes.Number,
         default: 0
     },
-    daysStreak: {
+    days_streak: {
         type: mongoose.SchemaTypes.Number,
         default: 0
     },
-    minutesPerDayGoal: {
+    minutes_per_day_goal: {
         type: mongoose.SchemaTypes.Number,
         default: 5
     },
-    todayStreakCompleted: {
+    today_streak_completed: {
         type: mongoose.SchemaTypes.Boolean,
         default: false
     }
 });
 
-module.exports = mongoose.model('kidsReports', KidReportSchema);
+module.exports = mongoose.model('KidReport', KidReportSchema);

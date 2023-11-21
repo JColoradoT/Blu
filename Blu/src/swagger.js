@@ -16,7 +16,7 @@ const swaggerSetup = swaggerUI.setup(swaggerJSDoc({
             }
         ],
     },
-    apis: [`${path.join(__dirname, './routes/*.js')}`]
+    apis: [`${path.join(__dirname, './routes/*.js')}`, `${path.join(__dirname, './database/models/*.js')}`]
 }));
 
 module.exports = {
