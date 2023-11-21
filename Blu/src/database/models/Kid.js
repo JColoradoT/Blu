@@ -12,16 +12,22 @@ const mongoose = require('mongoose');
  *                  anyOf:
  *                      -   $ref: '#/components/schemas/User'
  *                      -   $ref: '#/components/schemas/GoogleUser'
- *                  example: '5123512'
  *              name:
  *                  type: string
- *                  example: 'Gustavo Adolfo'
  *              age:
  *                  type: integer
  *                  example: 53
  *              kid_report_id:
  *                  $ref: '#/components/schemas/KidReport'
- *                  example: '748EC96F5883EDCF053F8B03'
+ *          required:
+ *              - user_id
+ *              - name
+ *              - age
+ *          example:
+ *              user_id: '5123512'
+ *              name: 'Gustavo Adolfo'
+ *              age: 75
+ *              kid_report_id: '748EC96F5883EDCF053F8B03'
  */
 
 const KidSchema = new mongoose.Schema({
@@ -34,10 +40,12 @@ const KidSchema = new mongoose.Schema({
         enum: ['User', 'GoogleUser']
     },
     name: {
-        type: mongoose.SchemaTypes.String
+        type: mongoose.SchemaTypes.String,
+        required: true
     },
     age: {
-        type: mongoose.SchemaTypes.Number
+        type: mongoose.SchemaTypes.Number,
+        required: true
     },
     kid_report_id: {
         type: mongoose.SchemaTypes.ObjectId,

@@ -7,15 +7,19 @@ const mongoose = require('mongoose');
  *      GoogleUser:
  *          type: object
  *          properties:
- *              googleId:
+ *              google_id:
  *                  type: string
- *                  example: '532623632'
+ *                  unique: true
  *              kids:
  *                  type: array
  *                  items:
  *                      $ref: '#/components/schemas/Kid'
  *                  uniqueItems: true
- *                  example: ['BD62E2A09FC9C2F57DF327E1', '18C2C8DDCA7A8030DEE9D549']
+ *          required:
+ *              - google_id
+ *          example:
+ *              google_id: '532623632'
+ *              kids: ['BD62E2A09FC9C2F57DF327E1', '18C2C8DDCA7A8030DEE9D549']
  */
 
 const GoogleUserSchema = new mongoose.Schema({

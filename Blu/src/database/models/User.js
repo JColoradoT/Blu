@@ -10,7 +10,6 @@ const mongoose = require('mongoose');
  *              email:
  *                  type: string
  *                  format: email
- *                  example: 'name@mail.com'
  *              password:
  *                  type: string
  *                  format: password
@@ -19,7 +18,13 @@ const mongoose = require('mongoose');
  *                  items:
  *                      $ref: '#/components/schemas/Kid'
  *                  uniqueItems: true
- *                  example: ['BD62E2A09FC9C2F57DF327E1', '18C2C8DDCA7A8030DEE9D549']
+ *          required:
+ *              - email
+ *              - password
+ *          example:
+ *              email: 'name@mail.com'
+ *              password: '123'
+ *              kids: ['BD62E2A09FC9C2F57DF327E1', '18C2C8DDCA7A8030DEE9D549']
  */
 const UserSchema = new mongoose.Schema({
     email: {

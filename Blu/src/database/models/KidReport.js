@@ -9,18 +9,22 @@ const mongoose = require('mongoose');
  *          properties:
  *              kid_id:
  *                  $ref: '#/components/schemas/Kid'
- *                  example: '18C2C8DDCA7A8030DEE9D549'
  *              minutes_played_today:
  *                  type: integer
- *                  example: 10
  *              days_streak:
  *                  type: integer
- *                  example: 3
  *              minutes_per_day_goal:
  *                  type: integer
- *                  example: 10
  *              today_streak_completed:
  *                  type: boolean
+ *          required:
+ *              - kid_id
+ *          example:
+ *              kid_id: '18C2C8DDCA7A8030DEE9D549'
+ *              minutes_played_today: 10
+ *              days_streak: 3
+ *              minutes_per_day_goal: 10
+ *              today_streak_completed: true
  */
 
 const KidReportSchema = new mongoose.Schema({
