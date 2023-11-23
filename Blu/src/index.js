@@ -10,9 +10,13 @@ app.use(express.urlencoded({ extended: true }));
 require('./database/index');
 
 // routes
-app.use('/api-doc', swaggerUI.serve, swaggerSetup);
+app.use('/api-doc/', swaggerUI.serve, swaggerSetup);
 app.use('/api/authentication/', require('./routes/authentication'));
-app.use('/api/kid', require('./routes/kidProfile'));
+app.use('/api/:user_id/kids/', (req, res, next) => {
+    req.user_id = req.params.user_id;
+    next();
+}, require('./routes/kidProfile'));
+
 app.use('/api/reports/', require('./routes/reports'));
 
 const PORT = process.env.PORT;
