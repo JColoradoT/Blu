@@ -12,12 +12,11 @@ require('./database/index');
 // routes
 app.use('/api-doc/', swaggerUI.serve, swaggerSetup);
 app.use('/api/authentication/', require('./routes/authentication'));
-app.use('/api/:user_id/kids/', (req, res, next) => {
-    req.user_id = req.params.user_id;
+app.use('/api/kids/', require('./routes/kidProfile'));
+app.use('/api/kids/:kid_id/reports/', (req, res, next) => {
+    req.kid_id = req.params.kid_id;
     next();
-}, require('./routes/kidProfile'));
-
-app.use('/api/reports/', require('./routes/reports'));
+}, require('./routes/reports'));
 
 const PORT = process.env.PORT;
 

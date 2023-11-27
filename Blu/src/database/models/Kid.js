@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
  *                  type: string
  *              age:
  *                  type: integer
- *                  example: 53
  *              kid_report_id:
  *                  $ref: '#/components/schemas/KidReport'
  *          required:
