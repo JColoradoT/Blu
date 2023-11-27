@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authenticationController = require('../controllers/authenticationController');
 
 /**
  * @openapi
@@ -18,12 +19,7 @@ const router = express.Router();
  *              200:
  *                  description: User succesfully registered
  */
-router.post('/register', (req, res) => {
-    res.status(200).send(JSON.stringify({
-        status: 'ok',
-        data: 'user succesfully registered'
-    }));
-});
+router.post('/register');
 
 /**
  * @openapi

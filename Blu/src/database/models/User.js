@@ -40,6 +40,14 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.String,
         required: true
     },
+    verified: {
+        type: mongoose.SchemaTypes.Boolean,
+        default: false
+    },
+    created_at: {
+        type: mongoose.SchemaTypes.Date,
+        default: new Date()
+    },
     kids: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Kid'

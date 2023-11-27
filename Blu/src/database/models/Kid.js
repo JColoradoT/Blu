@@ -49,7 +49,11 @@ const KidSchema = new mongoose.Schema({
     kid_report_id: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'KidReport',
-    }
+    },
+    created_at: {
+        type: mongoose.SchemaTypes.Date,
+        default: new Date()
+    },
 });
 
 module.exports = mongoose.model('Kid', KidSchema);

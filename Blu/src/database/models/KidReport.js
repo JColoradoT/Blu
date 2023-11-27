@@ -47,7 +47,11 @@ const KidReportSchema = new mongoose.Schema({
     today_streak_completed: {
         type: mongoose.SchemaTypes.Boolean,
         default: false
-    }
+    },
+    created_at: {
+        type: mongoose.SchemaTypes.Date,
+        default: new Date()
+    },
 });
 
 module.exports = mongoose.model('KidReport', KidReportSchema);
