@@ -28,6 +28,10 @@ const GoogleUserSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    name: {
+        type: mongoose.SchemaTypes.String,
+        required: true,
+    },
     kids: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Kid'
