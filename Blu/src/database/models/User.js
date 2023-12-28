@@ -50,8 +50,8 @@ const UserSchema = new mongoose.Schema({
     },
     kids: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Kid'
+        ref: 'kid'
     }]
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('user', UserSchema);

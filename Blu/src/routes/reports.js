@@ -1,4 +1,5 @@
 const express = require('express');
+const { getKidReport, startSession, deleteSession, finishSession } = require('../controllers/reportsController');
 const router = express.Router();
 
 /**
@@ -34,17 +35,7 @@ const router = express.Router();
  *                                  data:
  *                                      $ref: '#/components/schemas/KidReport'
  */
-router.get('/', (req, res) => {
-    res.status(200).send(JSON.stringify({
-        status: 'ok',
-        data: {
-            minutesPlayedToday: 15,
-            daysStreak: 4,
-            minutePerDayGoal: 15,
-            todayStreakCompleted: false
-        }
-    }));
-});
+router.get('/', getKidReport);
 
 /**
  * @openapi
@@ -63,12 +54,7 @@ router.get('/', (req, res) => {
  *              '201':
  *                  description: Game session succesfully created
  */
-router.post('/start-session', (req, res) => {
-    res.status(201).send({
-        status: 'ok',
-        data: `Session succesfully started for kid ${req.kid_id}`
-    });
-});
+router.post('/start-session', startSession);
 
 /**
  * @openapi
@@ -87,12 +73,7 @@ router.post('/start-session', (req, res) => {
  *              '201':
  *                  description: Game session succesfully deleted
  */
-router.delete('/delete-session', (req, res) => {
-    res.status(200).send({
-        status: 'ok',
-        data: `Session succesfully deleted for kid ${req.kid_id}`
-    });
-});
+router.delete('/delete-session', deleteSession);
 
 /**
  * @openapi
@@ -121,26 +102,6 @@ router.delete('/delete-session', (req, res) => {
  *                                  data:
  *                                      $ref: '#/components/schemas/KidReport'
  */
-router.put('/finish-session', (req, res) => {
-    const playedTime = req.body.playedTime;
-    const prevReport = {
-        minutesPlayedToday: 2,
-        daysStreak: 4,
-        minutePerDayGoal: 15,
-        todayStreakCompleted: false
-    };
-
-    prevReport.minutesPlayedToday += parseInt(playedTime);
-
-    if (prevReport.minutesPlayedToday >= prevReport.minutePerDayGoal && !prevReport.todayStreakCompleted) {
-        prevReport.daysStreak++;
-        prevReport.todayStreakCompleted = true;
-    }
-
-    res.status(200).send({
-        status: 'ok',
-        data: `Kid ${req.kid_id} updated: ${JSON.stringify(prevReport)}`
-    });
-});
+router.put('/finish-session', finishSession);
 
 module.exports = router;

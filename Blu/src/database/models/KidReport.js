@@ -30,7 +30,7 @@ const mongoose = require('mongoose');
 const KidReportSchema = new mongoose.Schema({
     kid_id: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Kid'
+        ref: 'kid'
     },
     minutes_played_today: {
         type: mongoose.SchemaTypes.Number,
@@ -54,4 +54,4 @@ const KidReportSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('KidReport', KidReportSchema);
+module.exports = mongoose.model('kid_report', KidReportSchema);

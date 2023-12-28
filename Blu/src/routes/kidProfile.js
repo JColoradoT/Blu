@@ -1,4 +1,6 @@
 const express = require('express');
+const { getAllKids, getOneKid, createNewKid, updateKid, deleteKid } = require('../controllers/kidProfileController');
+const avoidGettingOtherKidsInfoMiddleware = require('../utils/avoidGettingOtherKidsInfoMiddleware');
 const router = express.Router();
 
 /**
@@ -23,12 +25,7 @@ const router = express.Router();
  *                                      items:
  *                                      $ref: '#/components/schemas/Kid'
  */
-router.get('/', (req, res) => {
-    res.status(200).send(JSON.stringify({
-        status: 'ok',
-        data: [{ name: 'kid1' }, { name: 'kid2' }]
-    }));
-});
+router.get('/', getAllKids);
 
 /**
  * @openapi
@@ -59,12 +56,7 @@ router.get('/', (req, res) => {
  *                                      items:
  *                                          $ref: '#/components/schemas/Kid'
  */
-router.get('/:kid_id/', (req, res) => {
-    res.status(200).send(JSON.stringify({
-        status: 'ok',
-        data: `This is kid ${req.params.kid_id}`
-    }));
-});
+router.get('/:kid_id/',avoidGettingOtherKidsInfoMiddleware, getOneKid);
 
 /**
  * @openapi
@@ -84,12 +76,7 @@ router.get('/:kid_id/', (req, res) => {
  *              '201':
  *                  description: Kid succesfully created
  */
-router.post('/', (req, res) => {
-    res.status(201).send({
-        status: 'ok',
-        data: JSON.stringify(req.body)
-    });
-});
+router.post('/', createNewKid);
 
 /**
  * @openapi
@@ -125,12 +112,7 @@ router.post('/', (req, res) => {
  *                                  data:
  *                                      $ref: '#/components/schemas/Kid'
  */
-router.put('/:kid_id/', (req, res) => {
-    res.status(200).send({
-        status: 'ok',
-        data: JSON.stringify(req.body)
-    });
-});
+router.put('/:kid_id/',avoidGettingOtherKidsInfoMiddleware, updateKid);
 
 /**
  * @openapi
@@ -149,11 +131,6 @@ router.put('/:kid_id/', (req, res) => {
  *              '200':
  *                  description: Kid succesfully deleted
  */
-router.delete(':kid_id/', (req, res) => {
-    res.status(200).send({
-        status: 'ok',
-        data: `Kid ${req.params.id} deleted`
-    })
-});
+router.delete('/:kid_id/',avoidGettingOtherKidsInfoMiddleware, deleteKid);
 
 module.exports = router;

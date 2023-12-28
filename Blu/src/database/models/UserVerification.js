@@ -9,7 +9,7 @@ const UserVerificationSchema = new mongoose.Schema({
     },
     user_type: {
         type: mongoose.SchemaTypes.String,
-        enum: ['User', 'GoogleUser']
+        enum: ['user', 'google_user']
     },
     unique_string: {
         type: mongoose.SchemaTypes.String,
@@ -25,3 +25,5 @@ const UserVerificationSchema = new mongoose.Schema({
         default: new Date().setHours(new Date().getHours() + 1)
     }
 });
+
+module.exports = mongoose.model('user_verification', UserVerificationSchema);

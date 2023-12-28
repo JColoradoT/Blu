@@ -4,3 +4,5 @@ const dbUrl = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_P
 
 mongoose.connect(dbUrl)
     .then(() => console.log("connected to DB"));
+
+module.exports = dbUrl;

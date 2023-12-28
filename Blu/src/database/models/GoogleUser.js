@@ -38,8 +38,8 @@ const GoogleUserSchema = new mongoose.Schema({
     },
     kids: [{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Kid'
+        ref: 'kid'
     }]
 });
 
-module.exports = mongoose.model('GoogleUser', GoogleUserSchema);
+module.exports = mongoose.model('google_user', GoogleUserSchema);

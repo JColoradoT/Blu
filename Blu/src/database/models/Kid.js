@@ -36,7 +36,7 @@ const KidSchema = new mongoose.Schema({
     },
     user_type: {
         type: mongoose.SchemaTypes.String,
-        enum: ['User', 'GoogleUser']
+        enum: ['user', 'google_user']
     },
     name: {
         type: mongoose.SchemaTypes.String,
@@ -48,7 +48,7 @@ const KidSchema = new mongoose.Schema({
     },
     kid_report_id: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'KidReport',
+        ref: 'kid_report',
     },
     created_at: {
         type: mongoose.SchemaTypes.Date,
@@ -56,4 +56,4 @@ const KidSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Kid', KidSchema);
+module.exports = mongoose.model('kid', KidSchema);
